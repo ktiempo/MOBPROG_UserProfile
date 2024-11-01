@@ -4,7 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import LoginScreen from './screens/LoginScreen';
 import SignupScreen from './screens/SignupScreen';
 import PasswordRecoveryScreen from './screens/PasswordRecoveryScreen';
-import UserProfile from './screens/UserProfile'; // your profile page component
+import UserProfile from './screens/UserProfile'; 
 
 const Stack = createStackNavigator();
 

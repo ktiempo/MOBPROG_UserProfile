@@ -8,8 +8,8 @@ export default function PasswordRecoveryScreen({ navigation }) {
         navigation.navigate('Login');
     };
 
-    return(
-        <View Style={Styles.container}>
+    return (
+        <View style={styles.container}> 
             <Text style={styles.title}>Password Recovery</Text>
             <TextInput
                 style={styles.input}
@@ -29,14 +29,12 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         padding: 16,
     },
-
     title: {
         fontSize: 24,
         fontWeight: 'bold',
         textAlign: 'center',
         marginBottom: 20,
     },
-
     input: {
         height: 50,
         borderColor: '#ddd',

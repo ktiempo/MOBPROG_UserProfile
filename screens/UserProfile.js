@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { View, StyleSheet, ScrollView, Image, Text } from 'react-native';
+import { useNavigation } from '@react-navigation/native'; // Import useNavigation
 import EditButton from '../components/EditButton';
 import SettingsIcon from '../components/SettingsIcon';
 import ToggleSwitch from '../components/ToggleSwitch';
@@ -7,12 +8,14 @@ import Infosection from '../components/InfoSection';
 import SignOutButton from '../components/SignOutButton';
 
 const UserProfile = () => {
+    const navigation = useNavigation(); // Use navigation
+
     const [user] = useState({
         name: 'Krysel Tiempo',
         email: 'tiempo.kryselapril@gmail.com',
         phone: '+639123456789',
         bio: 'rawr!',
-        profilePicture: require('../assets/images/prof.png'), 
+        profilePicture: require('../assets/images/prof.png'),
         joinedDate: 'joined 1 month ago',
     });
 
@@ -25,14 +28,12 @@ const UserProfile = () => {
     return (
         <ScrollView style={[styles.container, isDarkMode && styles.containerDark]}>
             <View style={[styles.header, isDarkMode && styles.headerDark]}>
-                {/* Display the circular profile picture */}
                 <Image
                     source={user.profilePicture}
                     style={styles.profileImage}
                     onError={(error) => console.log('Error loading image:', error.nativeEvent.error)}
                 />
 
-                {/* Display the name and joined date */}
                 <Text style={[styles.name, isDarkMode && styles.nameDark]}>{user.name}</Text>
                 <Text style={[styles.joinedDate, isDarkMode && styles.joinedDateDark]}>{user.joinedDate}</Text>
 
@@ -46,7 +47,7 @@ const UserProfile = () => {
                 <Infosection label="Phone" content={user.phone} isDarkMode={isDarkMode} />
                 <Infosection label="Bio" content={user.bio} isDarkMode={isDarkMode} />
             </View>
-            <SignOutButton onPress={() => alert('Sign Out Pressed')} isDarkMode={isDarkMode} />
+            <SignOutButton onPress={() => navigation.navigate('Login')} isDarkMode={isDarkMode} />
         </ScrollView>
     );
 };
@@ -66,7 +67,7 @@ const styles = StyleSheet.create({
     profileImage: {
         width: 100,
         height: 100,
-        borderRadius: 50, 
+        borderRadius: 50,
         marginBottom: 10,
     },
     name: {
